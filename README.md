@@ -1,174 +1,172 @@
 OracleScripts
 =============
-Набор скриптов для работы с СУБД Oracle
+A set of scripts for working with Oracle DBMS
 
-1) rman Включение архивирования 
-   Скрипты для создания полного бэкапа базы данных, включают:
-  - автоматическое создание бэкапа с возможностью восстановления или создания standby;
-  - добавление в cron;
-  - копирование на тестовый сервер;
-  - автоматическое тестовое восстановление.
+1) rman Enable archiving
+В В В Scripts for creating a full database backup include:
+В В - automatic creation of backup with the ability to restore or create standby;
+В В - adding to cron;
+В В - copying to the test server;
+В В - automatic test recovery.
 
-2) Создание standby 
-   Скрипты для автоматического создания standby- сервера.
+2) Creating standby
+В В В Scripts to automatically create a standby server.
 
-3) Мониторинг активных сессий.
-   Можно посмотреть текущую активность базы в sqlplus
+3) Monitoring active sessions.
+В В В You can see the current database activity in sqlplus
 
-4) Мониторинг состояния базы
-   Проверка некоторых параметров СУБД, я добавляю в cron, 
-   периодически приходят письма о состоянии базы и возникшие ошибки.
+4) Base status monitoring
+В В В Checking some parameters of the DBMS, I add to cron,
+В В В periodically letters about the state of the database and errors that have occurred.
 
 5) work
-   Набор полезных скриптов для ежедневного администрирования:
+В В В A set of useful scripts for daily administration:
 
-По алфавиту
+Alphabetically
 ------------
 
-bctop.sql      Top сессий по измененным блокам файлов 
+bctop.sql Top Sessions on Modified File Blocks
 
-cs_drall.sql   создает скрипт на удаление всех объектов текущей схемы
+cs_drall.sql creates a script to delete all objects in the current schema.
 
-dtop.sql       общая статистика по чтению данных
-dmllocks.sql   DML блокировки
-ddllocks.sql   DDL блокировки
-dbtop.sql      Top сессий по измененным блокам файлов
-dctop.sql      Top сессий по измененным блокам файлов (с учетом consistent)
+dtop.sql general statistics on reading data
+dmllocks.sql DML lock
+ddllocks.sql DDL locks
+dbtop.sql Top Sessions on Modified File Blocks
+dctop.sql Top sessions for modified file blocks (consistent)
 
-exrate.sql     Показывает Execution rate
+exrate.sql Shows Execution rate
 
-fspace.sql     показывает свободное место в базе
-fstop.sql      статистика по файлам (io) привязанная к сидам
-fstop.sql      IO по файлам с SID-ами
-ftop.sql       статистика по файлам (io)
-fullscan.sql   Top последних Full scan таблиц
+fspace.sql shows free space in the database
+fstop.sql file statistics (io) linked to sids
+fstop.sql IO on files with SIDs
+ftop.sql file statistics (io)
+fullscan.sql Top recent full scan tables
 
-gcompile.sql   создает скрипт на компиляцию инвалидов
-gp_asc.sql     выкачивает указанные пакеты из базы
-gver.sql       по названию выдает версию пакета CBOSS
+gcompile.sql creates a script to compile disabilities
+gp_asc.sql downloads the specified packages from the database
+gver.sql shows the version of the CBOSS package by name
 
-hitrate.sql    Попадание в кэш
+hitrate.sql cache hit
 
-index.sql      Индексы указанной таблицы со списком полей
+index.sql Indices of the specified table with a list of fields
 
-kill.sql       Убивает сессию
+kill.sql Kills session
 
-lntop.sql      статистика по запросу латчей (название, кол-во)
-lstop.sql      статистика по запросу латчей (сид, кол-во)
-ltop.sql       статистика по запросу латчей (название, сид, кол-во)
-lock.sql       Взаимные блокировки сессий
-lhq.sql        Очередь за латчами
-lmtop.sql      Инкрементальная статистика по latch children miss/сек
+lntop.sql statistics on latche request (name, quantity)
+lstop.sql statistics for Latche request (led, count)
+ltop.sql statistics for Latche request (name, led, qty)
+lock.sql mutual session locking
+lhq.sql Queue for Latches
+lmtop.sql Incremental statistics on latch children miss / sec
 
-mtop.sql       статистика по cpu/memory
+mtop.sql statistics on cpu / memory
 
-object.sql     Детализация по объекту
+object.sql Detailing by object
 
-ptop.sql       Инкрементальная статистика по parse/сек
+ptop.sql Incremental statistics on parse / sec
 
-ratop.sql      Top сессий по сгенеренным redo entries (для titan)
-rstop.sql      статистика по redo (нужно указать номер статистики)
-rtop.sql       статистика по redo (entries, size)
+ratop.sql Top sessions by generated redo entries (for titan)
+rstop.sql statistics for redo (you must specify the number of statistics)
+rtop.sql statistics for redo (entries, size)
 
-sherr.sql      показывает ошибки компиляции текущей схемы
-swait.sql      Ожидание сессии
-sqltop.sql     Top сессий по IO (по данным v$sql)
-sessions.sql   Показывает сколько активных и неактивных сессий
+sherr.sql shows compile errors of the current schema
+swait.sql Waiting for session
+sqltop.sql Top Sessions by IO (according to v $ sql)
+sessions.sql Shows how many active and inactive sessions
 
-testsize.sql   выдает реальный размер объекта
-tsizeo.sql     наибольшие объекты схемы
-tsizet.sql     наибольшие объекты табличного пространства
+testsize.sql gives the actual size of the object
+tsizeo.sql largest schema objects
+tsizet.sql largest tablespace objects
 
-who.sql        кто в базе
-whoami.sql     кто я и где
-whodo.sql      что делает sid
-whoin.sql      кто в указанной схеме
-whoinj.sql     какие jobs работают
-whoinrbs.sql   показывает состояние rollback сегментов
-whois.sql      кто этот sid
-whopid.sql     какой пид у сида
-whosid.sql     какой сид у пида
-whoinbh.sql    Сессии изменяющие блоки buffer cache защищаемые указанным latch children
-waits.sql      Показывает Top Event waits
-wrate.sql      Показывает Event waits rate
-whom.sql       сессии с указанной машины
+who.sql who in the database
+whoami.sql who i am and where
+whodo.sql what sid does
+whoin.sql who in the specified scheme
+whoinj.sql what jobs work
+whoinrbs.sql shows the status of rollback segments
+whois.sql who is this sid
+whopid.sql what pid at sid
+whosid.sql what pid
+whoinbh.sql Sessions changing buffer buffer blocks protected by the specified latch children
+waits.sql Shows Top Event waits
+wrate.sql Shows event waits rate
+whom.sql sessions from the specified machine
 
 
 ------------------------------------------
-По назначению
+To destination
 ------------
 
 
- Общая производительность 
+В Overall performance
 
-WAITS    Показывает Top Event waits
-SESSIONS Показывает соотношение активных и неактивных сессий
-EXRATE   Показывает Execution rate
-WRATE    Показывает Event waits rate
-MTOP     Top сессий c сортировкой по используемой памяти и CPU
- 
- Storage 
+WAITS Shows Top Event waits
+SESSIONS Shows the ratio of active and inactive sessions
+EXRATE Shows Execution rate
+WRATE Shows event waits rate
+MTOP Top sessions sorted by used memory and CPU
+В 
+В Storage
 
-FSPACE   показывает свободное место в базе
-TESTSIZE выдает реальный размер объекта (до highwatermark)
-TSIZEO   Наибольшие объекты схемы
-TSIZET   Наибольшие объекты табличного пространства
+FSPACE shows free space in the database
+TESTSIZE gives the actual size of the object (up to highwatermark)
+TSIZEO Largest Schema Objects
+TSIZET largest tablespace objects
 
- Ввод/вывод 
+В Input Output
 
-DTOP     top сессий по чтению данных (сортировка по логическому, физическому чтению или изменению блоков)
-FSTOP    статистика по файлам (io) привязанная к SID
-FTOP     статистика по файлам (io)
-FULLSCAN Top последних Full scan таблиц
-SQLTOP   Top сессий по IO (по данным v$sql)
-RATOP    Top сессий по сгенеренным redo entries 
+DTOP top sessions for reading data (sorting by logical, physical reading or changing blocks)
+FSTOP file statistics (io) associated with SID
+FTOP file statistics (io)
+FULLSCAN Top recent full scan tables
+SQLTOP Top Sessions on IO (according to v $ sql)
+RATOP Top Sessions by generated redo entries
 
- Защелки 
+В Latches
 
-LTOP     статистика по запросу латчей (название, сид, кол-во)
-LHQ      очередь за латчами
-LSTOP    статистика по запросу латчей (сид, кол-во)
-LNTOP    статистика по запросу латчей (название, кол-во)
-LMTOP    статистика по промахам за латчи в разрезе latch children 
+LTOP statistics for LatcheвЂ™s request (title, led, qty)
+LHQ queue for latches
+LSTOP statistics for LatcheвЂ™s request (led, qty)
+LNTOP statistics on request latchey (name, number)
+LMTOP misses missal statistics for latch children
 
- Сессии 
+В Sessions
 
-WHO        список сессий в базе данных
-WHOAMI     в какой базе и схеме моя сессия
-WHODO      что делает сессия (SQL)
-WHOIN      какие сессии в указанной схеме
-WHOINJ     какие удаленные задания работают
-WHOINRBS   показывает состояние rollback сегментов
-WHOUSETBS  Кто использует заданный tablespace
-WHOKEEPRBS Кто держит rollback сегмент (сортировка по logon_time)
-WHOIS      детализация сессии
-WHOPID     выводит SPID по заданному SID
-WHOSID     выводит SID по заданному SPID
-WHOM       сессии с указанной машины
-WHOLOCK    Выдает сессию, которая локирует строки таблицы (по заданному селекту)
-SWAIT      Ожидание сессии
-SLOCK      Взаимные блокировки сессий (подробный список сессий с локированными объектами)
-LOCKS      Блокировки (в виде дерева)
-DMLLOCKS   DML-блокировки
-DDLLOCKS   DDL-блокировки
-KILL       Убивает сессию (по SID и SERIAL)
-CS_KILL_JOBS      Создает скрипт на удаление сессий удаленных заданий download
-CS_KILL_OBJLOCKER Создает скрипт на удаление сессий, локирующих указанный объект download
-CS_KILLSESS       Создает скрипт на удаление сессий с указанной машины download
-WHOWAIT    Список сессий ожидающих к-л события
+WHO list of sessions in the database
+WHOAMI in which base and pattern my session
+WHODO what the session does (SQL)
+Whoin what sessions in the specified pattern
+Whoinj what remote jobs work
+WHOINRBS shows the state of rollback segments
+WHOUSETBS Who uses the given tablespace
+WHOKEEPRBS Who keeps rollback segment (sorted by logon_time)
+WHOIS session details
+WHOPID displays the SPID for a given SID
+WHOSID displays the SID for a given SPID.
+WHOM sessions from the specified machine
+WHOLOCK Gives a session that locks table rows (by a given select)
+SWAIT Waiting session
+SLOCK Interlock sessions (a detailed list of sessions with locked objects)
+LOCKS Locks (tree view)
+DMLLOCKS DML lock
+DDLLOCKS DDL Blocking
+KILL Kills Session (by SID and SERIAL)
+CS_KILL_JOBS Creates a script for deleting sessions of remote tasks download
+CS_KILL_OBJLOCKER Creates a script for deleting sessions that lock the specified download object
+CS_KILLSESS Creates a script to delete sessions from the specified machine download
+WHOWAIT List of sessions awaiting for events
 
- Объекты схемы 
+В Schema Objects
 
-OBJECT          Детализация по объекту
-INDEX           Индексы таблицы с полями
-GCOMPILE        Создает скрипт на компиляцию инвалидных объектов
-SHERR           Выдает ошибки компиляции на текущей схеме
-CUSER           Создает схему, выдает необходимые для работы CBOSS гранты
-CS_DROP_DBLINK  Создает скрипт на удаление database links
-CS_DRALL        Создает скрипт на удаление всех объектов текущей схемы
-FNAME           Выдает название файла по номеру
-GP_ASC          Создает скрипт на создание пакета (только неврапленого!)
-GVER            Выдает версию пакета CBOSS
-SET_DATE_FORMAT Устанавливает формат даты на dd-mm-yyyy hh24:mi:ss 
-
-
+OBJECT Detailing by object
+INDEX Table indexes with fields
+GCOMPILE Creates a script to compile invalid objects.
+SHERR Produces compilation errors on the current schema.
+CUSER Creates a Scheme, Issues Grants Required to Work for CBOSS
+CS_DROP_DBLINK Creates a script for deletion database links
+CS_DRALL Creates a script to delete all objects in the current schema.
+FNAME Gives file name by number
+GP_ASC Creates a script to create a package (just unlocked!)
+GVER Shows CBOSS Package Version
+SET_DATE_FORMAT Sets the date format to dd-mm-yyyy hh24: mi: ss
